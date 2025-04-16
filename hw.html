@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes and Inheritance</title>
+</head>
+
+<body>
+    <p id="vehicleInfo"></p>
+    <p id="carInfo"></p>
+    <script>
+        // Parent class
+        class Vehicle {
+            constructor(name, type) {
+                this.name = name;
+                this.type = type;
+            }
+            displayDetails() {
+                return `Vehicle Name: ${this.name}, Type: ${this.type}`;
+            }
+        }
+
+        // Child class inheriting from Vehicle
+        class Car extends Vehicle {
+            constructor(name, type, brand, model) {
+                super(name, type); // Call the parent class constructor
+                this.brand = brand;
+                this.model = model;
+            }
+            displayDetails() {
+                return `${super.displayDetails()}, Brand: ${this.brand}, Model: ${this.model}`;
+            }
+        }
+
+        // Create instances
+        const vehicle1 = new Vehicle("Truck", "Heavy");
+        const car1 = new Car("Sedan", "Light", "Toyota", "Corolla");
+
+        // Display details in HTML
+        document.getElementById("vehicleInfo").innerHTML = vehicle1.displayDetails();
+        document.getElementById("carInfo").innerHTML = car1.displayDetails();
+    </script>
+</body>
+
+</html>
